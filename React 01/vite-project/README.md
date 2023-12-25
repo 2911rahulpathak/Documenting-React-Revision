@@ -1,8 +1,29 @@
-# React + Vite
+Learnings:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Initially when you install react
+First file-> index.html that is rendering
+Main.jsx is imported in index.html
+Inside Main.jsx you'll find the App component
 
-Currently, two official plugins are available:
+Structure of React(App.jsx):
+Imports
+Component(JS function code)
+export (For using it we export it )
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+App.jsx structure
+import './App.css'
+
+//Component - App() - JS function
+function App() {
+//write JS code
+return (
+
+   <div>
+    
+   </div>
+  )
+//what we want to return/ Display on Webpage can mention in return statement
+//You can also write JS 
+}
+
+export default App
