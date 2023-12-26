@@ -27,3 +27,14 @@ return (
 }
 
 export default App
+
+
+################################################################################################
+Props:
+################################################################################################
+
+props -> short form of properties, & it is a fundamental concept used to pass data from one component to another component
+
+(Ps: Think of Props as JS object->key:value, where keys are the names of the props)
+Props as: Component(function) argument
+
