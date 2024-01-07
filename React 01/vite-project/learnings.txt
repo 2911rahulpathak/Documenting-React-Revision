@@ -1,0 +1,15 @@
+App.jsx:
+
+import 
+function Captial() -> Component
+js 
+returning div -> JSX 
+export 
+
+#####################################################
+
+button onclick="aisc()"     -> in JS  
+
+In React you dont call using ()
+
+button onclick="functionname"

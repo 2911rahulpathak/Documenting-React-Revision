@@ -1,0 +1,30 @@
+Creating a Todo Application:
+
+Create  a Readme.md File (Can google for markdown editor online)
+After Read me -> Frontend and the backend(First thingy generally build it)
+
+We need to initialize a node project for backend folder
+//put a package.json 
+run npm install express(to create a HTTP server)
+
+when you ran the command npm ___ -> new folder node_modules gets created & It brings alot of libraries from the internet to your machine
+And not just express a bunch of libraries are installed -> express folder itself contains package.json
+
+### when you are running your project you need the dependencies or node-modules
+If you delete Node_modules -> run the command -> npm install because my package.json file consist of exhastive list of dependencies I added in past
+
+
+now write basic express boilerplate code , with express.json() middleware
+It adds req body -> req object
+
+now add zod library to make input validation for the todo Application
+/* inputs to expect
+In body:{
+    title:string;
+    description:string
+
+}
+ */
+
+ creating a new file and calling it types.js -> for zod input validation 
+ 

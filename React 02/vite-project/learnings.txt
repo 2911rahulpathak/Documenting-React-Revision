@@ -1,0 +1,20 @@
+React is a new syntax, that under the hood gets converted in HTML/CSS/JS 
+
+React -> npm run build -> HTML/CSS/JS 
+
+#########################################################
+For creating React App(worry about) : Component,State & Re-rendering
+
+an object that represents the current state of the app (It represents dynamic things in your app-> things that change)
+
+#############################################
+UseState() -> To make React watch your state 
+Everytime state changes the component re-renders 
+
+const [count,setCount] = useState(0)
+//useState function call returns array -> first thing puts it count & other one in setCount
+
+what is [count,setCount]?? -> array destructuring 
+const [a,b] =[1,2]  //take 1 and put it in a variable & take 2 and put it in b variable
+Object desctructing : const {name} = {name:"ABC",age:21}  you get name as by doing object destructuring 
+
