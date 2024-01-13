@@ -18,3 +18,101 @@ what is [count,setCount]?? -> array destructuring
 const [a,b] =[1,2]  //take 1 and put it in a variable & take 2 and put it in b variable
 Object desctructing : const {name} = {name:"ABC",age:21}  you get name as by doing object destructuring 
 
+initially we thought of JSX -> a JS file where u can write html 
+for technically being correct -> JSX -> a js file, inside which u can write both JS and XML
+
+########################################################
+npm run build -> see -> dist folder -> index.html & long JS file -> host this dist & we can have that app running
+
+whenever you need to render a JS var inside a React component -> you have to put it inside curly brackets {}
+
+writing onclick in html was:
+onclick ="func()" 
+But writing in react we dont have to call the func with ()
+write onclick = {functionName} & define the function above
+
+
+
+
+/* 
+Example for re-rendering:
+//for dynamic we need state & component
+let state = { //globalvariabel
+  count:0
+}
+function App() {
+  function FuncName(){
+    state.count = state.count + 1;
+    console.log(state.count)
+  }
+
+  return (
+    <div>
+  <button onClick={FuncName}> Counter {state.count}</button>     
+    </div>
+  )
+}
+
+export default App
+
+
+
+
+If you conosle it will work But here its not updated on Frontend -> React doesn't look at every variable as State variable
+
+
+############################################################################################
+React says If you want to define a State variable -> you'll have to do it in certain way so that I'm watching It
+
+
+Import {useState} from "react" -> use this hook  to define the state 
+
+& then update the state  -> then render 
+#############################################################
+
+
+
+  */
+
+
+
+
+
+  /* 
+  Better way of writing the component and calling it in parent component:
+  import { useState } from "react";
+
+function App() {
+
+  const [count,setCount] = useState(0); // [1,2] in array
+ // console.log(count)
+  //console.log(setCount)
+
+  function FuncName(){
+    setCount(count + 1)
+  }
+
+  return (
+    <div>
+    <CustomButton count={count} setCount={setCount}></CustomButton>    
+    </div>
+  )
+}
+
+
+//you can pass some input to this CustomButton
+function CustomButton(props){
+
+  function FuncName(){
+    props.setCount(props.count + 1)
+  }
+
+  return <button onClick={FuncName}>
+    Counter {props.count}
+  </button>
+}
+
+export default App
+
+  
+   */
