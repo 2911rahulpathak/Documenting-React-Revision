@@ -1,0 +1,176 @@
+Re-render : whenever a final dom manipulation happens
+
+import { useState } from "react";
+/*  
+One parent element:
+return (
+    
+    <Header title="ABC"></Header> 
+    <Header title="NAME"></Header>
+    
+  )
+
+  here if you don't want an extra div inside which you want to have these HEader component title
+  use this: <> or<React.Fragment> </> instead of <div>
+*/
+
+function App() {
+
+  const [title,updateTitle] = useState("my name is Rahul");
+
+  function updateHeader(){
+    updateTitle("my name is " + Math.random())
+  }
+
+  return (
+    <div>
+    <button onClick={updateHeader}>Click me to change the file</button>
+    <Header title={title}></Header> 
+    <Header title="static"></Header>
+    <Header title="static"></Header>
+    <Header title="static"></Header>
+    <Header title="static"></Header> 
+    </div>
+  )
+}
+
+//{title} -> called object destructuring
+/* either {title} -> {title}
+or (props) & {props.title} */
+function Header({title}){
+  console.log("rendered")
+   return <div>
+    {title}
+   </div>
+}
+
+export default App
+
+
+##############################################################
+2 ways to fix this: 
+##############################################################
+
+1. put the state down:
+
+  import { useState } from "react";
+  /*  
+  One parent element:
+  return (
+      
+      <Header title="ABC"></Header> 
+      <Header title="NAME"></Header>
+      
+    )
+
+    here if you don't want an extra div inside which you want to have these HEader component title
+    use this: <> or<React.Fragment> </> instead of <div>
+  */
+
+  function App() {
+
+   
+
+    return (
+      <div>
+        <HeaderWithButton></HeaderWithButton>
+      <Header title="static"></Header>
+      </div>
+    )
+  }
+
+function HeaderWithButton(){
+  const [title,updateTitle] = useState("my name is Rahul");
+
+  function updateHeader(){
+    updateTitle("my name is " + Math.random())
+  }
+  return <div>
+     <button onClick={updateHeader}>Click me to change the file</button>
+      <Header title={title}></Header> 
+  </div>
+
+}
+
+  //{title} -> called object destructuring
+  /* either {title} -> {title}
+  or (props) & {props.title} */
+  function Header({title}){
+    console.log("rendered")
+    return <div>
+      {title}
+    </div>
+  }
+
+  export default App
+
+
+
+
+######################################################
+Way number 2: react.Memo 
+######################################################
+
+whenever you want a component to memoize/not re-render when its props haven't changed
+// here function name was Header now pass it as anonymous function to React.memo()
+//either do React.memo or destructure it {memo} & use it as memo instead of React.memo
+const Header = React.memo(function Header({title}){
+    console.log("rendered")
+    return <div>
+      {title}
+    </div>
+  })
+
+
+
+import React from "react";
+import { useState } from "react";
+  /*  
+  One parent element:
+  return (
+      
+      <Header title="ABC"></Header> 
+      <Header title="NAME"></Header>
+      
+    )
+
+    here if you don't want an extra div inside which you want to have these HEader component title
+    use this: <> or<React.Fragment> </> instead of <div>
+  */
+
+  function App() {
+
+    const [title,updateTitle] = useState("my name is Rahul");
+
+    function updateHeader(){
+      updateTitle("my name is " + Math.random())
+    }
+
+    return (
+      <div>
+         <button onClick={updateHeader}>Click me to change the file</button>
+      <Header title={title}></Header> 
+      <Header title="static"></Header>
+      <Header title="static"></Header>
+      <Header title="static"></Header>
+      <Header title="static"></Header>
+
+      </div>
+    )
+  }
+
+  //{title} -> called object destructuring
+  /* either {title} -> {title}
+  or (props) & {props.title} */
+  
+
+// here function name was Header now pass it as anonymous function to React.memo()
+//either do React.memo or destructure it {memo} & use it as memo instead of React.memo
+const Header = React.memo(function Header({title}){
+    console.log("rendered")
+    return <div>
+      {title}
+    </div>
+  })
+
+  export default App

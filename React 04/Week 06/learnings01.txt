@@ -1,0 +1,33 @@
+/*  
+One parent element:
+return (
+    
+    <Header title="ABC"></Header> 
+    <Header title="NAME"></Header>
+    
+  )
+
+  here if you don't want an extra div inside which you want to have these HEader component title
+  use this: <> or<React.Fragment> </> instead of <div>
+*/
+
+function App() {
+
+  return (
+    <>
+    <Header title="ABC"></Header> 
+    <Header title="NAME"></Header>
+    </>
+  )
+}
+
+//{title} -> called object destructuring
+/* either {title} -> {title}
+or (props) & {props.title} */
+function Header({title}){
+   return <div>
+    {title}
+   </div>
+}
+
+export default App
