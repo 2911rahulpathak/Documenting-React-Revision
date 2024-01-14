@@ -1,26 +1,39 @@
-  
-function App() {
-    return (
-     <div>
-      <CardWrapper innerComponent={<TextComponent/>}></CardWrapper>
-      </div>
-    )
-  }
+import { useEffect } from "react"
+import { useState } from "react"  
 
-    //it needs to accept some React component as an input
-function CardWrapper({innerComponent}){
-  //create a div which has a border
-  return <div style={{border: "2px solid black"}}>
-{innerComponent}
-   </div>
+function App() {
+   
+  const [todos,setTodos] = useState([])
+  
+  useEffect(function(){
+   setInterval(()=>{
+    fetch("https://sum-server.100xdevs.com/todos").then(async function(res){
+      const json = await res.json();
+      setTodos(json.todos);
+      })
+   },10000)
+  },[])
+
+  return <div>
+    {todos.map((todo)=>
+      <Todo key={todo.id} title={todo.title} description={todo.description}/>)}  
+  </div>
+
 }
 
+    //it needs to accept some React component as an input
+function Todo({title,description}){
+return <div>
+  <h1>
+    {title}
+  </h1>
+  <h4>
+    {description}
+  </h4>
+</div>
 
-  function TextComponent(){
-    return <div>
-      hi there
-    </div>
-  }
+}
+
 
 
 

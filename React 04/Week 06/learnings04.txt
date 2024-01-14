@@ -1,4 +1,6 @@
-  
+
+The below code is not used
+
 function App() {
     return (
      <div>
@@ -25,3 +27,39 @@ function CardWrapper({innerComponent}){
 
 
   export default App
+
+
+The syntax which is used :
+
+
+
+/*  */
+  
+function App() {
+    return (
+     <div>
+      <CardWrapper>
+      hi there
+      </CardWrapper>
+      </div>
+    )
+  }
+
+    //it needs to accept some React component as an input
+function CardWrapper({children}){
+  //create a div which has a border
+  return <div style={{border: "2px solid black"}}>
+{children}
+   </div>
+}
+
+
+
+
+
+
+  export default App
+
+The struture of the outer card : CardWrapper 
+children can access the component children/div/string
+we can create a div & style it using style = {{border: }}

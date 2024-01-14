@@ -1,0 +1,10 @@
+useEffect:
+
+useEffect(function(){
+   alert("hi") 
+},[])
+
+
+#################################################
+you cannot write async syntax in useEffect
+#################################
