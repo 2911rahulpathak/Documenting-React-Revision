@@ -8,3 +8,5 @@ useEffect(function(){
 #################################################
 you cannot write async syntax in useEffect
 #################################
+
+useEffect renders at the end in order of execution
