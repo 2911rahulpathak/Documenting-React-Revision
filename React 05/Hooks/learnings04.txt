@@ -1,0 +1,38 @@
+import { useState } from "react";
+import { useEffect } from "react";
+
+function App() {
+const [counter, setCounter] = useState(0);
+  const [inputValue, setInputValue] = useState(1);
+
+
+  //here can't we just remember the value from last operation
+  /*As on every button click It is re-rendering */
+  //That is what useMemo lets u do -> across renders if you want to remember a value-> use Memo
+ 
+
+  //we can use -> useMemo where you dont need a state variable only InMemory variable & depends on Input value
+  let count = useMemo(() =>{ 
+   let count = 0;
+  for (let i = 1; i <= inputValue; i++) {
+    count = count + i;
+  }
+  return count;
+},[inputValue])
+
+//slightly cleaner saves one State variable 
+  return <div>
+    <input onChange={function(e) {
+      setInputValue(e.target.value);
+    }} placeholder={"Find sum from 1 to n"}></input>
+    <br />
+    Sum from 1 to {inputValue} is {count}
+    <br />
+    <button onClick={() => {
+      setCounter(counter + 1);
+    }}>Counter ({counter})</button>
+  </div>
+ 
+}
+
+export default App;

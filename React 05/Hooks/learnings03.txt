@@ -1,0 +1,38 @@
+useMemo:
+before that understand memoization:
+It means remembering some output -> given an input & not computing it again
+
+/* My Code sample */
+
+/* 
+
+import { useState } from "react";
+import { useEffect } from "react";
+
+function App() {
+
+  const [message,setMessage] = useState("");
+  const [count,setCount] = useState(0)
+
+  function Update(){
+    setCount(count+1);
+  }
+
+  function handleChange(event){
+    let inValue=0;
+    const inSum = event.target.value;
+    for(let i=0;i<=inSum;i++){
+      inValue=i+inValue;
+    }
+    setMessage(inValue);
+  }
+
+  return <div>
+    <input type="text" name="message" onChange={handleChange}/>
+    <h2>Sum is {message}</h2>
+    <button onClick={Update}> Counter {count}</button>
+  </div>
+}
+
+export default App;
+ */
