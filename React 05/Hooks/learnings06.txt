@@ -1,0 +1,16 @@
+1:20
+useCallbacks -> hook to memoize functions
+
+a=1
+b=1
+if(a==b) -> true
+Are they referentially equal? means reference of a and reference of this b is the same?
+
+example 2: 
+function sum(a,b){ return a+b}
+
+function sum2(a,b){return a+b}
+
+if(sum==sum2) -> False
+even though they are exactly same but not referentially (are they in same place in memory)
+They point to different locations in your ram/Memory
