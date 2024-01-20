@@ -1,0 +1,5 @@
+Custom hoooks:
+
+Just like useState,useEffect, you can write your own hooks
+
+only condition is - It should start with a use(naming convention)

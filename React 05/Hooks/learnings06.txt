@@ -14,3 +14,63 @@ function sum2(a,b){return a+b}
 if(sum==sum2) -> False
 even though they are exactly same but not referentially (are they in same place in memory)
 They point to different locations in your ram/Memory
+
+
+
+
+If parent component re-renders -> Child component will 100 percent re-render 
+even if the inputs to the child haven't changed(1:35)[2nd]
+
+import {useState} from "react";
+
+function App(){
+  const [count,setCount]= useState(0);
+
+  return <div>
+    <ButtonComponent/>
+      <button onClick={()=>{
+        setCount(count+1);
+      }}>Click me {count}</button>
+  </div>
+
+}
+
+function ButtonComponent(){
+  console.log("child render")
+
+  return <div>
+    <button>Button Clicked</button>
+  </div>
+}
+
+export default App;
+
+
+
+## Until you wrap the child in Memo
+
+
+import {useState} from "react";
+import { memo } from "react";
+
+function App(){
+  const [count,setCount]= useState(0);
+
+  return <div>
+    <ButtonComponent/>
+      <button onClick={()=>{
+        setCount(count+1);
+      }}>Click me {count}</button>
+  </div>
+
+}
+
+const ButtonComponent = memo(() =>{
+  console.log("child render")
+
+  return <div>
+    <button>Button Clicked</button>
+  </div>
+})
+
+export default App;
