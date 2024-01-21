@@ -4,17 +4,19 @@ import { useEffect } from "react";
 
 export function Assignment1() {
 
-    useEffect(() => {
+    const inputRef = useRef();
 
+    useEffect(() => {
+        inputRef.current.focus()
     }, []);
 
     const handleButtonClick = () => {
-
+        inputRef.current.focus()
     };
 
     return (
         <div>
-            <input type="text" placeholder="Enter text here" />
+            <input ref={inputRef} type="text" placeholder="Enter text here" />
             <button onClick={handleButtonClick}>Focus Input</button>
         </div>
     );

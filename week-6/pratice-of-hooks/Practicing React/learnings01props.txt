@@ -1,0 +1,39 @@
+//Normal way
+<Child message="hi there" > </Child>
+
+
+//here inside props : object -> key value : message->hi there 
+
+function Child(props){
+
+    return <>
+        {props.message} 
+    </>
+
+}
+
+
+//Destructuring Props:
+
+<Child message="hi there" > </Child>
+
+
+//Instead of taking a key value pair 
+// You can destructure it using {} & the name of the key whose value you want to access
+
+function Child({message}){
+
+    return <>
+        {message} 
+    </>
+
+}
+
+
+
+
+
+
+
+
+First time component Mounts or first time it renders

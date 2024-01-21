@@ -1,0 +1,50 @@
+We are not yet doing client side routing:
+Refresh happening in Top bar here 
+
+because we use: 
+window.location.href="something"
+
+This is not a good way to do client side routing
+
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import './App.css'
+import { Dashboard } from './components/Dashboard'
+import { Landing } from './components/Landing'
+
+function App() {
+ 
+
+  return (
+    <div>
+      <div>
+        <button onClick={()=>{
+          window.location.href="/"
+        }}>Landing Page</button>
+        <button onClick={()=>{
+        window.location.href="/dashboard"
+         }}>Dashboard Page</button>
+      </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
+        <Route path="/" element={<Landing></Landing>}></Route>
+      </Routes>      
+    </BrowserRouter>
+    </div>
+  )
+}
+
+export default App
+
+
+There is this thing called as "useNavigate" Hook
+
+If you import this useNavigate hook from react-router-dom
+It makes sure it doesn't does hard reloading 
+
+This is one of right way of doing client side routing 
+
+
+useNavigate hook says whenever you are using me It expects to
+make sure you are using me up in the component that's inside browser router
