@@ -1,0 +1,11 @@
+Todo: https://www.youtube.com/watch?v=PGoGbfrjnxU
+
+Somemore: https://www.youtube.com/watch?v=xNQo6gEl16g
+
+Before that:
+2 input boxes (title,decription) => atom 
+button-> that lets todo on state somewhere
+
+filter input box to filter =>atom
+todos =>atom
+selector => the current set of todos

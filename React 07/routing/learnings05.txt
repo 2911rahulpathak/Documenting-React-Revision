@@ -1,3 +1,15 @@
+The way we had useMemo() for child component if you dont want to have smae value being recomputed again & again 
+And It was the optimal way 
+
+Similarly we have Selectors
+
+in example:
+isEven completly depends on count 
+If count is even -> isEven will be even
+If count is odd -> isEven will be odd
+
+
+
 import { countAtom, evenSelector } from "./store/atoms/Count";
 import { RecoilRoot,useRecoilValue, useSetRecoilState } from "recoil";
 
