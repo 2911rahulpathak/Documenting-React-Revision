@@ -1,1 +1,90 @@
 what is the shortcoming from context APi that State management fixes
+
+It helps us create 2 things: components section & state section 
+
+to install recoil: run command: npm install recoil 
+
+
+useRecoil State
+useRecoil value -> current value no need for array
+useSetRecoilState
+RecoilRoot
+
+for global state of application -> you can use Recoil  
+
+
+In this code : 
+import { useContext } from "react"
+import { CountContext } from "./Context";
+import { countAtom } from "./store/atoms/Count";
+import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
+
+function App() {
+  
+  return (
+    <div>
+      <RecoilRoot>
+      <Count/>
+      </RecoilRoot>
+    </div>
+  )
+}
+
+function Count() {
+  return <div>
+    
+    <CountRenderer/>
+    <Buttons />
+  </div>
+}
+//when you need both of them you use:
+// const [count,setCount] = useRecoilState(countAtom)
+
+function CountRenderer() {
+    const count = useRecoilValue(countAtom);
+  return <div>
+    {count}
+  </div>
+}
+
+function Buttons() {
+    //here if you see there is count which is destructed but if you do console.log("render")
+  const [count,setCount] = useRecoilState(countAtom);
+ return <div>
+    <button onClick={() => {
+      setCount(count + 1)
+    }}>Increase</button>
+
+    <button onClick={() => {
+      setCount(count - 1)
+    }}>Decrease</button>
+  </div>
+}
+
+export default App
+
+
+
+Problem is : If you look at buttons component
+
+It renders the Increase Button & Decrease Button
+
+It doesn't really need count 
+It just needs to Update it
+It doesnot need to show it inIncrease or decrease
+
+
+There are 2 ways to setState/ setCount 
+1)setCount(count + 1)
+2)setCount((c)=> count +1) //c get the current value -> and return the updated value
+
+the laste one doesn't require count to be present here
+
+there console.log -> Its rendering once you click on button Ideally It should not 
+
+make function 2 one 
+
+so rather than using useRecoilState
+
+what do I want? I want just setCount 
+const setCount = useSetRecoilState(countAtom) 
