@@ -1,0 +1,40 @@
+Install Tailwind in your react application: npm install 
+
+Tailwind: https://www.youtube.com/watch?v=tS7upsfuxmo
+
+Things to know in a frontend Framework:
+
+1. Flex
+2. Grids
+3. Responsiveness
+4. background color, text color, hover
+
+Normally a div takes complete width
+Flex: lets you position elements right next to each other 
+flex start : all children should be at beginning
+flex end:
+center 
+space-between
+space around-> all of space equal and space/2 is left at the end and beginning 
+
+
+one nuance here is instead of writing class in React.jsx file write className as it is a predefined thingy in JS 
+
+
+import './App.css'
+
+function App() {
+ 
+
+  return (
+    <>
+      <div className='flex justify-between'>
+      <div>hi</div>
+      <div>hi</div>
+      <div>hi</div>
+      </div>
+    </>
+  )
+}
+
+export default App

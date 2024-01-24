@@ -1,0 +1,31 @@
+Grids in Tailwind
+
+making divs with equal width can be done via Flexbox too
+
+But Its tricky when it comes to do it with unequal widths & that's where Grid comes into picture 
+
+grid-col-3 : how many parts I want to divide my window in & 3 is for 3 
+
+
+import './App.css'
+
+function App() {
+ 
+
+  return (
+    <>
+      <div className='grid grid-cols-3'>
+      <div className='bg-red-500'>hi</div>
+      <div className='bg-green-500'>hi</div>
+      <div className='bg-yellow-500'>hi</div>
+      <div>h1</div>
+      <div>hi</div>
+      </div>
+    </>
+  )
+}
+
+export default App
+
+
+This is for placing But for Responsiveness there is Responsive Design Section
