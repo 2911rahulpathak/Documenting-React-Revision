@@ -1,0 +1,54 @@
+Think of Recoil as the way of using useState hook: current state & state change
+
+create atoms accordingly
+
+If you define Atom 
+& then do something like 
+const variable = useRecoilValue(Atom)//hook
+
+{variable}
+
+It wont directly render the component -> 
+If you want to use any hook by recoil or any atom you want to access:
+
+It needs to be wrapped inside <RecoilRoot><RecoilRoot>
+
+
+
+
+import { RecoilRoot, useRecoilState, useRecoilValue } from 'recoil'
+import './App.css'
+import { jobsAtom, messagingAtom, networkAtom, notificationsAtom } from './atoms'
+
+//recoilroot
+
+/* This component needs to wrapp every component that uses hook */
+function App() {
+   return <RecoilRoot>
+   <MainApp></MainApp>
+   </RecoilRoot>
+}
+
+function MainApp(){
+  const networkNotificationCount = useRecoilValue(networkAtom)
+  const jobsCount = useRecoilValue(jobsAtom)
+  
+  const messagingCount = useRecoilValue(messagingAtom)
+  
+  const notificationCount = useRecoilValue(notificationsAtom)
+
+  return (
+    <>
+      <button>Home</button>
+      <button>My network ({networkNotificationCount >= 100 ? "99+" : networkNotificationCount})</button>
+      <button>Jobs ({jobsCount})</button>
+      <button>Messaging ({messagingCount})</button>
+      <button>Notification ({notificationCount})</button>
+      <button>Me</button>
+    </>
+  )
+
+  
+}
+
+export default App
