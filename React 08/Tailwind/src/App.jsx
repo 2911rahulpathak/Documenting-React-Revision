@@ -6,12 +6,10 @@ function App() {
 
   return (
     <>
-      <div className='grid grid-cols-3'>
-      <div className='bg-red-500'>hi</div>
-      <div className='bg-green-500'>hi</div>
-      <div className='bg-yellow-500'>hi</div>
-      <div>h1</div>
-      <div>hi</div>
+      <div className='grid grid-cols-1 md:grid-cols-3'>
+      <div>Hi there</div>
+      <div>Hi there 2</div>
+      <div>Hi there 3</div>
       </div>
     </>
   )

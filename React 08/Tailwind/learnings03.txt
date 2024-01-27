@@ -1,0 +1,59 @@
+when you go to youtube, depending on your display size the number of grid children are changed
+
+Phone-there is one grid 
+size changing ->  grid children changing 
+
+https://tailwindcss.com/docs/responsive-design
+
+How do you define Breakpoints depending on the screen size 
+
+sm -> 640 px se zyada means Breakpoint break huaa -> so now its between sm and md 
+breakpoints are sm,md,lg,xl,2xl
+
+
+Tailwind is working mobile first 
+########################################################################
+unprefixed utility take effect on all screen sizes
+prefix utility taked effect at that specified breakpoint and above
+######################################################################
+
+
+import './App.css'
+
+function App() {
+ 
+
+  return (
+    <>
+      <div className='bg-red-500 md:bg-blue-500'>
+      Hi there 
+      </div>
+    </>
+  )
+}
+
+export default App
+
+
+Assignment:
+
+import './App.css'
+
+function App() {
+ 
+
+  return (
+    <>
+      <div className='grid grid-cols-1 md:grid-cols-3'>
+      <div>Hi there</div>
+      <div>Hi there 2</div>
+      <div>Hi there 3</div>
+      </div>
+    </>
+  )
+}
+
+export default App
+
+
+Also clear a bit about Colour system:
