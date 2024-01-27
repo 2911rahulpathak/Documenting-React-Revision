@@ -57,3 +57,6 @@ export default App
 
 
 Also clear a bit about Colour system:
+
+-Font sizes 
+-Border Radius
