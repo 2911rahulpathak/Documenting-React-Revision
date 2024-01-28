@@ -1,0 +1,43 @@
+x
+
+When ever first time the component is put on the DOM -> Is it what is called Mount
+WHen ever it is put off the screen -> Unmounts
+These are called Lifecycle events 
+
+And you need to run some code when the component mounts & when the component unmounts 
+
+The way to do that in functional component is UseEffect() 
+
+
+
+#######################You can return a function from useEffect()
+
+ useEffect(() => {
+    // Perform setup or data fetching here
+    console.log("Component mounted ")
+    return () => {
+      // Cleanup code (similar to componentWillUnmount)
+      console.log("Component unmounted")
+    };
+  }, []);
+
+  Make sure its a function 
+  return ()=>{
+    //It runs whenever the dependency changes
+  }
+
+
+  eg: If todos changes -> the function from last render would run first  & then the logic would run again
+
+  First time the dependency changes, It will run from start 
+  Then for the second time first code inside return function runs -> CleanUp karo -> i.e old useEffect is gone away
+  The new Effect is being triggered again  
+
+  useEffect(() => {
+    // Perform setup or data fetching here
+    console.log("Component mounted ")
+    return () => {
+      // Cleanup code (similar to componentWillUnmount)
+      console.log("Component unmounted")
+    };
+  }, [todos]);
