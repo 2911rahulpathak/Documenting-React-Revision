@@ -1,0 +1,55 @@
+Data fetching custom hooks:
+
+
+Instead of getting the data this way we can have a bit more clear way to write it 
+
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+
+function App() {
+  const [todos, setTodos] = useState([])
+
+  useEffect(() => {
+    axios.get("https://sum-server.100xdevs.com/todos")
+      .then(res => {
+        setTodos(res.data.todos);
+      })
+  }, [])
+
+  return (
+    <>
+      {todos.map(todo => <Track todo={todo} />)}
+    </>
+  )
+}
+
+function Track({ todo }) {
+  return <div>
+    {todo.title}
+    <br />
+    {todo.description}
+  </div>
+}
+
+export default App
+
+
+
+
+
+Lets say you need todos in 10 different places & in all these 10 different places you are doing the same logic 
+ const [todos, setTodos] = useState([])
+
+  useEffect(() => {
+    axios.get("https://sum-server.100xdevs.com/todos")
+      .then(res => {
+        setTodos(res.data.todos);
+      })
+  }, [])
+
+
+
+
+
+
+  Here is the good way how it can be done
