@@ -52,4 +52,215 @@ Lets say you need todos in 10 different places & in all these 10 different place
 
 
 
-  Here is the good way how it can be done
+  Here is the good way to start with custom hooks how it can be done: encapsulating in a single hook 
+
+
+   import { useEffect, useState } from 'react'
+import axios from 'axios'
+
+//Make sure it starts with use
+function useTodos(){
+  const [todos, setTodos] = useState([])
+
+  useEffect(() => {
+    axios.get("https://sum-server.100xdevs.com/todos")
+      .then(res => {
+        setTodos(res.data.todos); //the updating logic happens here i.e why we are not returning setTodos
+      })
+  }, [])
+
+  return todos;
+}
+
+
+
+function App() {
+  const todos = useTodos();
+
+  return (
+    <>
+      {todos.map(todo => <Track key={todo.id} todo={todo} />)}
+    </>
+  )
+}
+
+function Track({ todo }) {
+  return <div key={todo.id}>
+    {todo.title}
+    <br />
+    {todo.description}
+  </div>
+}
+
+export default App
+
+
+##################################################################################
+A much better one is here 
+#############################################################################
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+
+//Make sure it starts with use
+function useTodos(){
+  const [todos, setTodos] = useState([])
+  const [loading,setLoading] = useState(true);
+
+  useEffect(() => {
+    axios.get("https://sum-server.100xdevs.com/todos")
+      .then(res => {
+        setTodos(res.data.todos); //the updating logic happens here i.e why we are not returning setTodos
+        setLoading(false);
+      })
+  }, [])
+
+  return {todos,loading};
+}
+
+
+
+function App() {
+  const {todos,loading} = useTodos();
+
+  if(loading){
+    return <div>Loading ...</div>
+  }
+
+  return (
+    <>
+      {todos.map(todo => <Track key={todo.id} todo={todo} />)}
+    </>
+  )
+}
+
+function Track({ todo }) {
+  return <div key={todo.id}>
+    {todo.title}
+    <br />
+    {todo.description}
+  </div>
+}
+
+export default App
+
+
+Repoll the backend => hit the backend again
+
+
+
+Auto-Refreshing hook: 
+
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+
+function useTodos(n) {
+  const [loading, setLoading] = useState(true);
+  const [todos, setTodos] = useState([])
+
+  function getData() {
+    axios.get("https://sum-server.100xdevs.com/todos")
+      .then(res => {
+        setTodos(res.data.todos);
+        setLoading(false);
+      })
+  }
+
+  useEffect(() => {
+    setInterval(() => {
+      getData();
+    }, n * 1000)
+    getData();
+  }, [n])
+
+  return {
+    todos: todos,
+    loading: loading
+  };
+}
+
+function App() {
+  const { todos, loading } = useTodos(5);
+
+  if (loading) {
+    return <div>
+      Loading...
+    </div>
+  }
+
+  return (
+    <>
+      {todos.map(todo => <Track todo={todo} />)}
+    </>
+  )
+}
+
+function Track({ todo }) {
+  return <div>
+    {todo.title}
+    <br />
+    {todo.description}
+  </div>
+}
+
+export default App
+
+
+
+
+
+
+##########################################################################
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+
+function useTodos(n) {
+  const [todos, setTodos] = useState([])
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const value = setInterval(() => {
+      axios.get("https://sum-server.100xdevs.com/todos")
+        .then(res => {
+          setTodos(res.data.todos);
+          setLoading(false);
+        })
+    }, n * 1000)
+  
+    axios.get("https://sum-server.100xdevs.com/todos")
+      .then(res => {
+        setTodos(res.data.todos);
+        setLoading(false);
+      })
+
+    return () => {
+      clearInterval(value)
+    }
+  }, [n])
+
+  return {todos, loading};
+}
+
+function App() {
+  const {todos, loading} = useTodos(10);
+
+  if (loading) {
+    return <div> loading... </div>
+  }
+
+  return (
+    <>
+      {todos.map(todo => <Track todo={todo} />)}
+    </>
+  )
+}
+
+function Track({ todo }) {
+  return <div>
+    {todo.title}
+    <br />
+    {todo.description}
+  </div>
+}
+
+export default App
+#################################################################################
